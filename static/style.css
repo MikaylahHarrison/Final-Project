@@ -1,0 +1,130 @@
+
+body {
+    background: #f5f7fa;
+    font-family: 'Inter', sans-serif;
+}
+
+
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 20px 15px;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+}
+
+.sidebar h5 {
+    font-weight: 600;
+    color: #333;
+}
+
+
+.content-area {
+    margin-left: 260px;
+    padding: 30px;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+}
+
+.table thead {
+    background: #eef0f7;
+    font-weight: 600;
+    color: #333;
+}
+
+.table tbody tr:hover {
+    background: #f8f9ff;
+}
+
+
+.btn-primary {
+    background-color: #536dfe !important;
+    border: none !important;
+    box-shadow: 0px 3px 8px rgba(83, 109, 254, 0.25);
+}
+
+.btn-danger {
+    background-color: #ff6b81 !important;
+    border: none !important;
+    box-shadow: 0px 3px 8px rgba(255, 107, 129, 0.25);
+}
+
+/* Quick modify pill buttons */
+.quick-btn {
+    background: #e6e7ff;
+    color: #4b4bff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.quick-btn:hover {
+    background: #d9dafe;
+    color: #0000e6;
+}
+
+/* Remove button */
+.remove-btn {
+    background: #ffe2e7;
+    color: #d72638;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    background: #ffd2d8;
+    color: #a61c29;
+}
+
+
+input.form-control {
+    border-radius: 10px;
+    border: 1px solid #cfd4e2;
+    padding: 6px 10px;
+}
+
+input.form-control:focus {
+    border-color: #536dfe;
+    box-shadow: 0 0 0 3px rgba(83, 109, 254, 0.2);
+}
+
+
+a {
+    text-decoration: none;
+    color: #3c67ff;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #1e3dd6;
+}
+
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        border-right: none;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .content-area {
+        margin-left: 0 !important;
+        padding-top: 20px;
+    }
+}
