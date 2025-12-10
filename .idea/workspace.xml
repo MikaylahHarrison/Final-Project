@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6c826eb-e534-4c42-9f23-8f8fc740d4a2" name="Changes" comment="12/4">
-      <change afterPath="$PROJECT_DIR$/.idea/sqlDataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/students.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/confirm_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/new_student.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/student_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/students.html" beforeDir="false" />
     </list>
     <list id="d36cd112-a8c6-4226-8675-1cde3be36cd2" name="Changes by 193465" comment="">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/newstudent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/newstudent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/newstudent.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +122,8 @@
       <workItem from="1764948553408" duration="2460000" />
       <workItem from="1765208160785" duration="549000" />
       <workItem from="1765208719283" duration="1521000" />
-      <workItem from="1765294232588" duration="2020000" />
+      <workItem from="1765294232588" duration="2135000" />
+      <workItem from="1765380764224" duration="2250000" />
     </task>
     <task id="LOCAL-00001" summary="12/4">
       <option name="closed" value="true" />
@@ -144,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765210228843</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="12/4">
+      <option name="closed" value="true" />
+      <created>1765296612784</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765296612784</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +168,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="12/4" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FinalExamProject$FinalExamProject.coverage" NAME="FinalExamProject Coverage Results" MODIFIED="1765295801395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FinalExamProject$FinalExamProject.coverage" NAME="FinalExamProject Coverage Results" MODIFIED="1765382623503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
