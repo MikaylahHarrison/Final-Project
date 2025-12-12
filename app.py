@@ -1,100 +1,34 @@
-from flask import Flask, render_template, request, redirect
-from models import db, Student, Infraction
+from flask import Flask, render_template
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db.init_app(app)
+# ------------------------------
+# ROUTES FOR EACH SCREEN
+# ------------------------------
 
-with app.app_context():
-    db.create_all()
-
-
-# HOME PAGE — LIST ALL STUDENTS
 @app.route("/")
-def home():
-    students = Student.query.all()
-    return render_template("home.html", students=students)
+def students_list():
+    return render_template("index.html")       # Screen 2
 
+@app.route("/student/<int:student_id>")
+def student_detail(student_id):
+    return render_template("student.html", student_id=student_id)   # Screen 5
 
-# ADD NEW STUDENT
-@app.route("/students/new", methods=["GET", "POST"])
+@app.route("/new-student")
 def new_student():
-    if request.method == "POST":
-        s = Student(first_name=request.form["first_name"],
-                    last_name=request.form["last_name"])
-        db.session.add(s)
-        db.session.commit()
-        return redirect("/")
-    return render_template("new_student.html")
+    return render_template("new-student.html")  # Screen 6
 
+@app.route("/create-course")
+def create_course():
+    return render_template("create-course.html")  # Create Course - Rubrics screen
 
-# STUDENT DETAILS PAGE
-@app.route("/students/<int:id>")
-def student_detail(id):
-    student = Student.query.get_or_404(id)
-    return render_template("student_detail.html", student=student)
+@app.route("/modify-buttons")
+def modify_buttons():
+    return render_template("modify-buttons.html")  # Screen 7
 
-
-# ADD INFRACTION
-@app.route("/infraction/add/<int:id>", methods=["POST"])
-def add_infraction(id):
-    student = Student.query.get_or_404(id)
-    desc = request.form["description"]
-    points = int(request.form["points"])
-
-    inf = Infraction(student=student, description=desc, points=points)
-    db.session.add(inf)
-    db.session.commit()
-
-    return redirect(f"/students/{id}")
-
-
-# QUICK ACTION BUTTONS
-@app.route("/infraction/quick/<int:id>/<string:type>")
-def quick_infraction(id, type):
-    student = Student.query.get_or_404(id)
-
-    mapping = {
-        "late": ("Late", -5),
-        "offtask": ("Off Task", -5)
-    }
-
-    desc, points = mapping[type]
-
-    inf = Infraction(student=student, description=desc, points=points)
-    db.session.add(inf)
-    db.session.commit()
-
-    return redirect("/")
-
-
-# DELETE AN INFRACTION
-@app.route("/infraction/delete/<int:id>")
-def delete_infraction(id):
-    inf = Infraction.query.get_or_404(id)
-    student_id = inf.student_id
-    db.session.delete(inf)
-    db.session.commit()
-    return redirect(f"/students/{student_id}")
-
-
-# CONFIRM DELETE STUDENT
-@app.route("/students/delete/<int:id>")
-def delete_student_confirm(id):
-    student = Student.query.get_or_404(id)
-    return render_template("confirm_delete.html", student=student)
-
-
-# DELETE STUDENT
-@app.route("/students/delete/yes/<int:id>")
-def delete_student(id):
-    student = Student.query.get_or_404(id)
-    db.session.delete(student)
-    db.session.commit()
-    return redirect("/")
-
+# ------------------------------
+# DEVELOPMENT ENTRY POINT
+# ------------------------------
 
 if __name__ == "__main__":
     app.run(debug=True)
