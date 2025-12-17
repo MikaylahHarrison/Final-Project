@@ -1,86 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Students – Employability Tracker</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body class="bg-light">
-
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html">Employability Tracker</a>
-    <div class="navbar-nav ms-auto">
-      <a class="nav-link" href="new-student.html">Add Student</a>
-      <a class="nav-link" href="create-course.html">Create Course</a>
-      <a class="nav-link" href="modify-buttons.html">Modify Buttons</a>
-    </div>
-  </div>
-</nav>
-
-<div class="container">
-  <h2 class="mb-4">Student Infractions</h2>
-
-  <div class="card p-3 shadow-sm">
-    <table class="table align-middle">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Employability</th>
-          <th>Quick Actions</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td><a href="student.html" class="fw-semibold">Harvey Specter</a></td>
-          <td>87%</td>
-          <td>
-            <button class="btn btn-sm btn-outline-primary">Late -5</button>
-            <button class="btn btn-sm btn-outline-primary">Off Task -5</button>
-          </td>
-          <td>
-            <a href="student.html" class="btn btn-sm btn-outline-secondary">View</a>
-          </td>
-        </tr>
-
-        <tr>
-          <td><a href="student.html" class="fw-semibold">Mike Ross</a></td>
-          <td>95%</td>
-          <td>
-            <button class="btn btn-sm btn-outline-primary">Late -5</button>
-            <button class="btn btn-sm btn-outline-primary">Off Task -5</button>
-          </td>
-          <td>
-            <a href="student.html" class="btn btn-sm btn-outline-secondary">View</a>
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
-  </div>
-</div>
-
-</body>
-</html>
 {% extends "base.html" %}
 {% block title %}Students{% endblock %}
+
 {% block content %}
+<h2 class="mb-3">Students</h2>
 
-<h2 class="mb-3">All Students</h2>
+<ul class="list-group mb-3">
+    {% if students %}
+        {% for student in students %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{{ url_for('student_detail', student_id=loop.index) }}">
+                    {{ student.first_name }} {{ student.last_name }} (Period {{ student.period }})
+                </a>
+                <span class="badge bg-secondary">{{ student.employability }}%</span>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li class="list-group-item text-muted">No students added yet.</li>
+    {% endif %}
+</ul>
 
-<!-- Example student list -->
-<div class="list-group">
-    <a href="{{ url_for('student_detail', student_id=1) }}" class="list-group-item list-group-item-action">
-        John Doe — Grade 95
-    </a>
-
-    <a href="{{ url_for('student_detail', student_id=2) }}" class="list-group-item list-group-item-action">
-        Sarah Smith — Grade 88
-    </a>
+<div class="d-flex gap-2 mb-4">
+    <a class="btn btn-success" href="{{ url_for('new_student') }}">Add Student</a>
+    <a class="btn btn-primary" href="{{ url_for('create_course') }}">Create Course</a>
+    <a class="btn btn-warning" href="{{ url_for('modify_buttons') }}">Modify Quick Buttons</a>
 </div>
-
 {% endblock %}
-

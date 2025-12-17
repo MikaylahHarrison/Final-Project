@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Create Course{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Create Course</h2>
+
+<div class="card p-4 shadow-sm" style="max-width: 700px;">
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Course Name</label>
+            <input class="form-control" name="course_name" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Teacher Name</label>
+            <input class="form-control" name="teacher_name" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Course</button>
+        <a href="{{ url_for('students_list') }}" class="btn btn-link">Cancel</a>
+    </form>
+</div>
+{% endblock %}

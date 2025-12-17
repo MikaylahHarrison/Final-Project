@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Modify Quick Buttons{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Modify Quick Buttons</h2>
+
+<div class="card p-4 shadow-sm mb-4">
+    <h5>Current Buttons</h5>
+
+    <table class="table table-sm table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Label</th>
+                <th>Points</th>
+                <th>Description</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for button in quick_buttons %}
+            <tr>
+                <td>{{ button.label }}</td>
+                <td>{{ button.points }}</td>
+                <td>{{ button.description }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('modify_buttons') }}" style="display:inline;">
+                        <input type="hidden" name="remove_label" value="{{ button.label }}">
+                        <button type="submit" class="btn btn-sm btn-danger">X</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="card p-4 shadow-sm">
+    <h5>Add New Quick Button</h5>
+
+    <form method="POST" action="{{ url_for('modify_buttons') }}">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Label</label>
+                <input class="form-control" name="label" placeholder="Late" required />
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Points</label>
+                <input type="number" class="form-control" name="points" placeholder="-5" required />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Description</label>
+                <input class="form-control" name="description" required />
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Add Button</button>
+    </form>
+</div>
+
+{% endblock %}
